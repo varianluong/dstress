@@ -1,0 +1,66 @@
+rails new dstress --database=postgresql --skip-test-unit -m ~/Git/dojo/rails/template.rb
+
+rails g model User handle:string first_name:string last_name:string email:string password:digest location:integer
+
+rails g model Response content:text
+
+rails g model Reason stress_reason:string
+
+rails g model Solution reason:references response:references 
+
+rails g model Sensitivity level:string
+
+rails g model Trigger content:string sensitivity:references
+
+rails g model Reminder reminder_type:string
+
+rails g model Scheduler phone:integer frequency:string reminder:references user:references
+
+rails g model Tip tip:string reminder:references
+
+
+Reminder
+reminder_type => [
+  "quote",
+  "exercise",
+  "mindful moment",
+]
+
+
+Reason
+stress_reason => [
+  "school/work",
+  "bullying",
+  "friends",
+  "finance",
+  "family",
+  "love/companionship",
+  "loss",
+  "self image",
+  "health",
+]
+
+Response
+content => [
+  "you will get through this",
+  "you are a champion",
+  "you will rock it",
+  "get with it",
+  "suck it up",
+]
+
+Sensitivity
+level => [
+  "humor",
+  "realistic",
+  "tough love",
+  "pick-me-up",
+]
+
+Trigger
+  { sensitivity_id: 1, content: "Humor me"}
+  { sensitivity_id: 2, content: "Give it to me"}
+  { sensitivity_id: 2, content: "I really need help"}
+  { sensitivity_id: 3, content: "Hit me with your best shot"}
+  { sensitivity_id: 4, content: "Compliment me"}
+
