@@ -1,2 +1,3 @@
 $ rails g Sessions
 $ rails g Users
+$ rails g Stresses

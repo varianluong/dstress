@@ -10,9 +10,9 @@
 
 <!-- logout button -->
 <% if current_user %>
-  <a href="/">Home</a> |
+  <a href="/stresses">Home</a> |
   <%= current_user.first_name %> |
-  <form action='/sessions' method='post'>
+  <form id="logout" action='/sessions' method='post'>
     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
     <input type='hidden' name='_method' value='delete'>
     <input type='submit' value='Log Out'>
