@@ -14,7 +14,9 @@ class PlacesController < ApplicationController
 		# http.use_ssl = true
 		# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		# request = Net::
-		obj = {:status => 'success' ,:url => "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_MAPS_EMBED_API_KEY}&q=#{params[:place]}+near+94539"}
+		user = User.find(session[:user_id])
+		zipcode = user.location
+		obj = {:status => 'success' ,:url => "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_MAPS_EMBED_API_KEY}&q=#{params[:place]}+near+#{zipcode}"}
 		render json: obj
 		# render text: ENV['GOOGLE_MAPS_EMBED_API_KEY']
 	end

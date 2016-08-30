@@ -48,3 +48,7 @@ triggers = Trigger.create([
   { sensitivity: Sensitivity.fourth, content: 'Compliment me' },
 ])
 
+users = User.create([
+  { handle: 'bobby', first_name: 'Bob', last_name: 'Bobby', email: 'bob@bobby.com', password: 'password', password_confirmation: 'password', location: 94539 }
+])
+
