@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   get '/places' => 'places#index'
   post '/places/geturl' => 'places#geturl'
+  root 'sessions#new'
+
+  get 'sessions/new'   => 'sessions#new' 
+  post 'sessions'      => 'sessions#create'
+  delete 'sessions'    => 'sessions#destroy'
+
+  get 'users'          => 'users#index'
+  post 'users'         => 'users#create'
+  
+  get 'main'           => 'main#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
