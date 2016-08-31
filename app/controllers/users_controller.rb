@@ -27,21 +27,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def fileupdate
-    user = User.find(session[:user_id]) 
-    if User.update(user.id, user_params)
-      warn "success!"
-      redirect_to '/games/index'
-    else
-      warn "error... :("
-      redirect_to '/games/index'
-    end
-  end
-
   private ############################
   # sanitize user params
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :handle, :location, :password, :password_confirmation, :customdartboard)
+    params.require(:user).permit(:email, :first_name, :last_name, :handle, :location, :password, :password_confirmation)
   end
-
 end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'images/index'
+
+  get 'images/new'
+
   root 'stresses#index'
-  
+
   get 'sessions/new'   => 'sessions#new' 
   post 'sessions'      => 'sessions#create'
   delete 'sessions'    => 'sessions#destroy'
@@ -18,7 +22,8 @@ Rails.application.routes.draw do
   ## games
   get 'games/index' => 'games#index'
   get 'games'       => 'games#index'
-  patch 'games/update' => 'users#fileupdate'
+  ## images
+  resources :images
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

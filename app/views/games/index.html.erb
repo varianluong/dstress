@@ -16,8 +16,8 @@
         vertical-align: top;
     } 
     #dartimage {
-        width: 640px;
-        height: 480px;  
+        width: 650px; 
+        height: 650px;
         border: 10px groove brown;
     }
     .dart {
@@ -71,103 +71,137 @@
         animation-duration: 300s;  /* large duration because bug (reappears after end of animation */
     }
     .tomato1 { 
-        width: 130px;   /* 292 */
-        height: 103px;  /* 230 */
+        width: 260px;   /* 292 */
+        height: 205px;  /* 230 */
     }
     .tomato2 { 
-        width: 60px;   /* 150 */
-        height: 54px;  /* 136 */
+        width: 120px;   /* 150 */
+        height: 108px;  /* 136 */
+    }
+    .shoe {
+        /* Chrome, Safari, Opera */
+        -webkit-animation-name: toss_bounce;
+        -webkit-animation-delay: 0s;
+        
+
+        animation-name: toss_bounce;
+        animation-delay: 0s;
+        animation-duration: 300s;
+    }
+    .shoe {
+        width: 182px;   /* 366 */
+        height: 223px;  /* 449 */
     }
     /* Standard syntax */
     @keyframes splat_nofade {
         0%    {width: 350%; height: 350%;}
         0.03% {width: 70%; height: 70%}
-        100%  {}
+        100%  {width: 70%; height: 70%}
     }
     @keyframes splat_fade {
         0%    {width: 275%; height: 275%;}
         0.03% {width: 90%; height: 90%}
-        12%   {opacity: 0;}
+        5%    {opacity: 0;}
         100%  {opacity: 0;}
     }
     @keyframes splat_slide_fade {
         0%    {width: 350%; height: 350%;}
         0.02% {width: 70%; height: 70%}
-        0.8%  {opacity: 1; padding-top:0em;}
-        7%    {opacity: 0; padding-top:2em;}
+        0.5%  {opacity: 1; padding-top:0em;}
+        3.5%  {opacity: 0; padding-top:2em;}
         100%  {opacity: 0; padding-top:2em;}
+    } 
+    @keyframes toss_bounce {
+        0%    {width: 350%; height: 350%;}
+        0.02% {width: 50%; height: 50%}
+        0.5%  {rotate(90deg)}
+        3.5%  {}
+        100%  {}
     } 
 </style>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
     var x_adjust = -73;
     var y_adjust = -75;
+    var totalObjects = 0;
+    var MAXTOTALOBJECTS = 100;
     var throwObjects = 
     { 
         "Dart1" :  {   "imageFilename":"Dart-w-shadow-small.png",
                             "x_offset":63+x_adjust, 
                             "y_offset":6+y_adjust,
                             "cssstylename": "dart dart1",
-                            "width":1,  /* 94 */
-                            "height":1  /* 117 */
+                            "width":94,   /* 94 */
+                            "height":117  /* 117 */
                     },
         "Dart2" :  {   "imageFilename":"Dart-w-shadow-small2.png",
                         "x_offset":2+x_adjust, 
                         "y_offset":7+y_adjust,
                         "cssstylename": "dart dart2",
-                        "width":1,  /* 134 */
-                        "height":1  /* 112 */
+                        "width":134,  /* 134 */
+                        "height":112  /* 112 */
                     },
         "Mud1" :    {   "imageFilename":"mud-splatter1.png",
                         "x_offset":-27+x_adjust, 
                         "y_offset":-5+y_adjust,
                         "cssstylename": "mud mud1",
-                        "width":1,  /* 134 */
-                        "height":1  /* 112 */
+                        "width":231,  /* 231 */
+                        "height":198  /* 198 */
                     },
         "Mud2" :    {   "imageFilename":"mud-splatter2.png",
                         "x_offset":+x_adjust, 
                         "y_offset":-10+y_adjust,
                         "cssstylename": "mud mud2",
-                        "width":1,  /* 156 */
-                        "height":1  /* 162 */
+                        "width":156,  /* 156 */
+                        "height":162  /* 162 */
                     },
         "Mud3" :    {   "imageFilename":"mud-splatter3.png",
                         "x_offset":-5+x_adjust, 
                         "y_offset":-5+y_adjust,
                         "cssstylename": "mud mud3",
-                        "width":1,  /* 159 */
-                        "height":1  /* 129 */
+                        "width":159,  /* 159 */
+                        "height":129  /* 129 */
                     },
         "Tomato1" : {   "imageFilename":"tomato-splatter-small1.png",
                         "x_offset":2+x_adjust, 
                         "y_offset":0+y_adjust,
                         "cssstylename": "tomato tomato1",
-                        "width":1,  /* 292 */
-                        "height":1  /* 230 */
+                        "width":180,  /* 180 */
+                        "height":142  /* 142 */
                     },
         "Tomato2" : {   "imageFilename":"tomato-splatter-small2.png",
                         "x_offset":1+x_adjust, 
                         "y_offset":7+y_adjust,
                         "cssstylename": "tomato tomato2",
-                        "width":1,  /* 292 */
-                        "height":1  /* 230 */
+                        "width":150,  /* 150 */
+                        "height":136  /* 136 */
+                    },
+        "Shoe" :    {   "imageFilename":"converse-shoe.png",
+                        "x_offset":1+x_adjust, 
+                        "y_offset":7+y_adjust,
+                        "cssstylename": "shoe",
+                        "width":366,  /* 366 */
+                        "height":449  /* 449 */
                     },
     }
     // var divXOffset = ; //px
     // var divYOffset = ; //px
     $(document).ready(function(){
-        $("#dartboardbtn").click(function(e) {
+        $("#dartboardgamebtn").click(function(e) {
             ;
         });
 
         $("#dartimage").click(function(e){
             var offset = $(this).offset();
-            clicked(e, offset);
+            if (totalObjects <= MAXTOTALOBJECTS) {
+                totalObjects+=1;
+                clicked(e, offset);
+            }
         });
 
         $("#resetbtn").click(function(e){
             $("#dartimage").html("");
+            totalObjects = 0;
         });
     });
     function clicked(e, offset)  {
@@ -194,6 +228,10 @@
                 else objectname = "Tomato2"; 
                 break;
             }
+            case "Shoes": {
+                objectname = "Shoe";
+                break;
+            }
             default : { //"Darts"
                 var r = Math.floor(Math.random()*2)+1;
                 if (r == 1) objectname = "Dart1";
@@ -202,8 +240,8 @@
             }
         }
         var obj = throwObjects[objectname];
-        var objXPosEM = (e.pageX - offset.left + obj["x_offset"]) *.0625;
-        var objYPosEM = (e.pageY - offset.top + obj["y_offset"]) *.0625;
+        var objXPosEM = (e.pageX - offset.left + obj["x_offset"]) *.065 - Math.pow(e.pageX, 1.001) * .001;
+        var objYPosEM = (e.pageY - offset.top + obj["y_offset"]) *.065 - Math.pow(e.pageY, 1.001) * .001;
         var objImageFilename = obj["imageFilename"];
         var objCSSstylename = obj["cssstylename"];
         var objWidth = obj["width"];
@@ -215,10 +253,10 @@
 </script>
 
 <div id="navdiv">
-    <button id="dartboardbtn" class="gamesNavbtn">Dartboard</button>
+    <button id="dartboardgamebtn" class="gamesNavbtn">Dartboard</button>
 </div>
 <div id="maindiv">
-    <div class="contentdiv" id="dartimage" style="background:url('/assets/donald-trump-finger.jpg'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
+    <div class="contentdiv" id="dartimage" style="background:url('<%= @image.dartboard.url %>'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
     </div>
     <div class="contentdiv">
         <label for="ammotype">Ammo type</label><br>
@@ -226,15 +264,17 @@
             <option selected="selected" value="Darts">Darts</option>
             <option value="Mud">Mud</option>
             <option value="Tomatoes">Tomatoes</option>
+            <option value="Shoes">Shoes</option>
         </select>
         <p><button id="resetbtn">Clear board</button></p>
-        <p><%= form_for @user, :url => "/games/update", :html => {:multipart => true} do |form| %>
-                <%= form.label "Custom image:" %><br>
-                <%= form.file_field :customdartboard %><br>
-                <%= form.submit :submit %>
-            <% end %>
+        <p>
+            <form action="/images" enctype="multipart/form-data" id="edit_pic" method="post">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <label for="image[dartboard]">Custom image:</label>
+                <input id="image_dartboard" name="image[dartboard]" type="file">
+                <br>
+                <input name="commit" type="submit" value="Upload">
+            </form>
         </p>
     </div>
 </div>
-<!-- <%= image_tag 'Dart-w-shadow-small.png', size:"80x96", alt:"dart" %> -->
-<%= image_tag @user.customdartboard.url, size:"120x96" %>
