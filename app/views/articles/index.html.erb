@@ -1,0 +1,7 @@
+<ul>
+	<% @results.each do |r| %>
+		<li>
+			<a href="<%= r['link'] %>"><%= r['title'] %></a>
+		</li>
+	<% end %>
+</ul>
