@@ -59,3 +59,6 @@ gem "paperclip", "~> 4.2"
 gem 'therubyracer'  # If using Ruby
 gem 'less-rails-bootstrap'
 
+#for reminder_feature
+gem 'delayed_job_active_record'
+

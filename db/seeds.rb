@@ -48,3 +48,8 @@ triggers = Trigger.create([
   { sensitivity: Sensitivity.fourth, content: 'Compliment me' },
 ])
 
+notifications = Notification.create([
+  { name: 'Harmann Bajwa', phone_number: '7202736622', time: '05:00:00'}
+])
+
+

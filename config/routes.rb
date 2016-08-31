@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  get 'sessions/new'   => 'sessions#new' 
+  get 'sessions/new'   => 'sessions#new'
   post 'sessions'      => 'sessions#create'
   delete 'sessions'    => 'sessions#destroy'
 
   get 'users'          => 'users#index'
   post 'users'         => 'users#create'
-  
+
   get 'stresses'           => 'stresses#index'
+
+  get 'notifications' => 'notifications#index'
+  post 'notifications' => 'notifications#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

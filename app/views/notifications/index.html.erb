@@ -1,0 +1,39 @@
+<div class="notif_input">
+  <h3>Reminders</h3>
+
+  <form action="/notifications" method="post">
+    <p>
+      <label for="name">Name: </label>
+      <input type="text" name="notification[name]" id="name">
+    </p>
+    <p>
+      <label for="phone_number">Phone Number: </label>
+      <input type="text" name="user[email]" id="email">
+    </p>
+    <p>
+      <label for="time">Time: </label>
+      <select name="notification[time]" id="time">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+  </p>
+
+
+
+    <p>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Set Reminder">
+    </p>
+  </form>
+</div>
+
+
