@@ -3,20 +3,34 @@ require 'net/http'
 require 'open-uri'
 class PlacesController < ApplicationController
 	def index
-		# @user = User.find(session[:id])
-		# zipcode = @user.location
+		user = User.find(session[:user_id])
+		zipcode = user.location
+		@url = "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_MAPS_API_KEY}&q=#{zipcode}"
 	end
 
 	def geturl
-		# @user = User.find(session[:id])
-		# uri = URI.parse("https://www.google.com/maps/embed/v1/search?key=#{ENV['GOOGLE_MAPS_EMBED_API_KEY']}&q=#{params[:place]}+near+94539")
-		# http = Net::HTTP.new(uri.host, uri.port)
-		# http.use_ssl = true
-		# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-		# request = Net::
 		user = User.find(session[:user_id])
 		zipcode = user.location
-		obj = {:status => 'success' ,:url => "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_MAPS_EMBED_API_KEY}&q=#{params[:place]}+near+#{zipcode}"}
+
+		url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{params[:place]}+near+#{zipcode}&key=#{Figaro.env.GOOGLE_MAPS_API_KEY}"
+		uri = URI.parse(url)
+		http = Net::HTTP.new(uri.host, uri.port)
+		http.use_ssl = true
+		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+		request = Net::HTTP::Get.new(uri.request_uri)
+		response = http.request(request)
+		data = response.body
+		datajson = JSON.load(data)
+
+		# render json: datajson
+
+		results = []
+		datajson["results"].each do |location|
+			location_obj = {:name => location["name"], :address => location["formatted_address"]}
+			results.append(location_obj)
+		end
+
+		obj = {:status => 'success' ,:url => "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_MAPS_API_KEY}&q=#{params[:place]}+near+#{zipcode}", :results => results}
 		render json: obj
 		# render text: ENV['GOOGLE_MAPS_EMBED_API_KEY']
 	end

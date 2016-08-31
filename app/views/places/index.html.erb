@@ -2,8 +2,12 @@
 	$(document).ready(function(){
 		$('#mapform').submit(function(){
 			$.post($(this).attr('action'), $(this).serialize(), function(data){
-				console.log(data);
+				//console.log(data);
 				$('#map').html('<iframe width="450" height="250" frameborder="0" style="border:0" src=' + data.url + '></iframe>');
+				$('#results').html('');
+				for(var i = 0; i < data.results.length; i++){
+					$('#results').append('<li><p>' + data.results[i].name + '</p>' + '<p>' + data.results[i].address + '</p></li>');
+				}
 				//console.log($('#map').attr(html));
 			}, 'json');
 			return false;
@@ -21,6 +25,7 @@
 	<input type='submit' value='Search'>
 </form>
 
-<div id='map'></div>
-
-<!--<iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBgPJX69luILpwK9Dejk_4Dh4pcHTa_Tlg&q=yoga+near+94539"></iframe>-->
+<div id='map'>
+	<iframe width='450' height='250' frameborder='0' style='border:0' src="<%= @url %>"></iframe>
+</div>
+<ul id='results'></ul>
