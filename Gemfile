@@ -53,3 +53,5 @@ end
 
 gem "bcrypt", "~> 3.1.7"
 gem "paperclip", "~> 4.2"
+
+gem 'figaro'
