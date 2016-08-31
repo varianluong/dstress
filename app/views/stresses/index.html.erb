@@ -1,6 +1,50 @@
-<h1>Welcome to DStress Main Page</h1>
+<div class="container" id="body">
 
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
+  <h1>Welcome to DStress</h1>
+
+  <div class="jumbotron">
+    <p>If you are in need of emergency services, click the button for resources to local and national hotlines.</p>
+    <p><a class="btn btn-danger btn-lg" href="#" role="button">I need help now!</a></p>
+
+  </div>
+
+  <div class="container-fluid">
+    <h2>What's your Stress?</h2>
+    <form id="stress_survey" action="/stresses" method="post">
+      <!-- select the reason for stress -->
+      <p>
+        <label for="stress_reason">Select a reason for your stress: </label>
+        <select name="stress[reason]" id="stress_reason">
+          <option value='' selected>Choose a reason</option>
+          <% @reasons.each do |r|  %>
+             <% if session[:stress_reason] == r.stress_reason %>
+               <option value="<%= r.stress_reason %>" selected><%= r.stress_reason %></option> 
+             <% else %>
+               <option value="<%= r.stress_reason %>"><%= r.stress_reason %></option> 
+             <% end %>
+          <% end %>
+        </select>
+      </p>
+
+      <!-- select the sensitivity level of the response -->
+      <p>
+        <label for="stress_response_type">Select how you would like DStress to respond: </label>
+        <select name="stress[response_type]" id="stress_response_type">
+          <option value='' selected>Choose a response</option>
+          <% @sensitivities.each do |s|  %>
+             <% if session[:response_type] == s.level %>
+               <option value="<%= s.level %>" selected><%= s.level %></option> 
+             <% else %>
+               <option value="<%= s.level %>"><%= s.level %></option> 
+             <% end %>
+          <% end %>
+        </select>
+      </p>
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <button class="btn btn-primary btn-med">Submit</button>
+    </form>
+  </div>
+
+
+</div> <!-- end div#body -->

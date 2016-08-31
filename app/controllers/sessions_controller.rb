@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   # otherwise, if not logged in, render login page
   def new
     if user = current_user
-      redirect_to "/stresses"
+      redirect_to "/"
     end
   end
 
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       flash[:messages].push({ 'status' => 'success', 'text' => "Welcome #{user.first_name}" }) 
       session[:user_id] = user.id
 
-      redirect_to "/stresses"
+      redirect_to "/"
     else
       if not params[:user][:email].present? 
         flash[:messages].push({ 'status' => 'error', 'text' => "Email cannot be blank" }) 

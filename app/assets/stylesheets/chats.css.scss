@@ -1,0 +1,36 @@
+// Place all the styles related to the Chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.chat {
+  width: 800px;
+  height: 600px;
+  border: 1px solid #eee;
+  margin: 5% auto;
+  border-radius: 2%;
+}
+
+div.chat_header {
+  width: 800px;
+  height: 50px;
+  //border: 1px solid #eee;
+  border-radius: 2%;
+  padding: 10px;
+
+}
+
+div.chat_body {
+  width: 800px;
+  height: 500px;
+  border: 1px solid #eee;
+  overflow: scroll;
+  padding: 10px;
+}
+
+div.chat_input {
+  width: 800px;
+  height: 50px;
+  //border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 2%;
+}

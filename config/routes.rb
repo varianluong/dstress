@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'stresses#index'
 
   get 'sessions/new'   => 'sessions#new' 
   post 'sessions'      => 'sessions#create'
@@ -7,8 +7,13 @@ Rails.application.routes.draw do
 
   get 'users'          => 'users#index'
   post 'users'         => 'users#create'
+
+  get 'stresses'       => 'stresses#index'
+  post 'stresses'      => 'stresses#create'
+
+  get 'solutions'      => 'solutions#index'
+  get 'chats'          => 'chats#index'
   
-  get 'stresses'           => 'stresses#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

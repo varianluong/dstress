@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # index page. if logged in, redirect to main page
   def index
     if current_user
-      redirect_to "/stresses"
+      redirect_to "/"
     else
       redirect_to "/sessions/new"
     end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if user.save
       flash[:messages].push({ 'status' => 'success', 'text' => "Successfully added"  })
       session[:user_id] = user.id
-      redirect_to "/stresses"
+      redirect_to "/"
     else
       errors = user.errors.full_messages
       errors.each do |error|
