@@ -88,7 +88,7 @@
         animation-delay: 0s;
         animation-duration: 300s;
     }
-    .shoe {
+    .shoe1 {
         width: 182px;   /* 366 */
         height: 223px;  /* 449 */
     }
@@ -114,9 +114,9 @@
     @keyframes toss_bounce {
         0%    {width: 350%; height: 350%;}
         0.02% {width: 50%; height: 50%}
-        0.5%  {rotate(90deg)}
-        3.5%  {}
-        100%  {}
+        0.03%  {opacity: 1; padding-top: 0em;}
+        0.3%  {opacity: 0; padding-top: 15em; margin-left: 3em;}
+        100%  {opacity: 0;}
     } 
 </style>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -179,7 +179,7 @@
         "Shoe" :    {   "imageFilename":"converse-shoe.png",
                         "x_offset":1+x_adjust, 
                         "y_offset":7+y_adjust,
-                        "cssstylename": "shoe",
+                        "cssstylename": "shoe shoe1",
                         "width":366,  /* 366 */
                         "height":449  /* 449 */
                     },
@@ -256,7 +256,7 @@
     <button id="dartboardgamebtn" class="gamesNavbtn">Dartboard</button>
 </div>
 <div id="maindiv">
-    <div class="contentdiv" id="dartimage" style="background:url('<%= @image.dartboard.url %>'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
+    <div class="contentdiv" id="dartimage" style="background:url('<%= @imgurl %>'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
     </div>
     <div class="contentdiv">
         <label for="ammotype">Ammo type</label><br>
