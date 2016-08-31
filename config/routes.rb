@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'games/index'
+
   root 'sessions#new'
 
   get 'sessions/new'   => 'sessions#new' 
@@ -10,6 +12,11 @@ Rails.application.routes.draw do
   
   get 'stresses'           => 'stresses#index'
 
+  ## games
+  get 'games/index' => 'games#index'
+  get 'games'       => 'games#index'
+  patch 'games/update' => 'users#fileupdate'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
