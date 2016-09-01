@@ -1,16 +1,7 @@
-<div>
-<script>
-  (function() {
-    var cx = '002312479753017096305:ecl4jwntjss';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-  //google.search.cse.element.getelement('my_search_el').execute("cats");
-</script>
-<gcse:search gname='my_search_el'></gcse:search>
-
-</div>
+<ul>
+<% @results.each do |r| %>
+	<li>
+		<a href="<%= r['link'] %>"><%= r['title'] %></a>
+	</li>
+<% end %>
+</ul>
