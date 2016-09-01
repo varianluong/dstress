@@ -17,6 +17,8 @@
 
 form#logout {
   display: inline-block;
+  /*margin: 0;
+  padding: 0;*/
 }
 
 p.success {
