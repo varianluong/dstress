@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get '/articles/get_results' => 'articles#get_results'
 
 
+  get '/places' => 'places#index'
+  post '/places/geturl' => 'places#geturl'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

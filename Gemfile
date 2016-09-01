@@ -62,4 +62,3 @@ gem 'less-rails-bootstrap'
 
 
 gem 'figaro'
-

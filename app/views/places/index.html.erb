@@ -1,0 +1,31 @@
+<script>
+	$(document).ready(function(){
+		$('#mapform').submit(function(){
+			$.post($(this).attr('action'), $(this).serialize(), function(data){
+				//console.log(data);
+				$('#map').html('<iframe width="450" height="250" frameborder="0" style="border:0" src=' + data.url + '></iframe>');
+				$('#results').html('');
+				for(var i = 0; i < data.results.length; i++){
+					$('#results').append('<li><p>' + data.results[i].name + '</p>' + '<p>' + data.results[i].address + '</p></li>');
+				}
+				//console.log($('#map').attr(html));
+			}, 'json');
+			return false;
+		});
+	});
+</script>
+
+<form id='mapform' method='post' action='places/geturl'>
+	<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+	<select name='place'>
+		<option value='gyms'>Gyms</option>
+		<option value='yoga'>Yoga Studios</option>
+		<option value='karaoke'>Karaoke Bars</option>
+	</select>
+	<input type='submit' value='Search'>
+</form>
+
+<div id='map'>
+	<iframe width='450' height='250' frameborder='0' style='border:0' src="<%= @url %>"></iframe>
+</div>
+<ul id='results'></ul>
