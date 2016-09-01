@@ -1,8 +1,9 @@
 <script>
 	$(document).ready(function(){
-		$.get('/articles/get_results', function(data){
+		var url = '/articles/get_results';
+		$.get(url, function(data){
 			//console.log(data)
-			str = '<ul>';
+			var str = '<ul>';
 			for(var i = 0; i < data.results.length; i++){
 				str += '<li><a href="';
 				str += data.results[i].link;

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
 
   get '/articles' => 'articles#index'
-  get '/articles/get_results' => 'articles#get_results'
+  get '/articles/get_results(/:query)' => 'articles#get_results'
 
 
   get '/places' => 'places#index'
