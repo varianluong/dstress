@@ -19,12 +19,18 @@ Rails.application.routes.draw do
   get 'chats'          => 'chats#index'
   
 
+
   ## games
   get 'games/index' => 'games#index'
   get 'games'       => 'games#index'
   ## images
   resources :images
   
+
+  get '/articles' => 'articles#index'
+  get '/articles/get_results' => 'articles#get_results'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

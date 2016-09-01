@@ -56,6 +56,10 @@ gem "bcrypt", "~> 3.1.7"
 # paperclip for image upload
 gem "paperclip", "~> 4.2"
 
+
 gem 'therubyracer'  # If using Ruby
 gem 'less-rails-bootstrap'
+
+
+gem 'figaro'
 
