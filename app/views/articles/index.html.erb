@@ -1,7 +1,19 @@
-<ul>
-<% @results.each do |r| %>
-	<li>
-		<a href="<%= r['link'] %>"><%= r['title'] %></a>
-	</li>
-<% end %>
-</ul>
+<script>
+	$(document).ready(function(){
+		$.get('/articles/get_results', function(data){
+			//console.log(data)
+			str = '<ul>';
+			for(var i = 0; i < data.results.length; i++){
+				str += '<li><a href="';
+				str += data.results[i].link;
+				str += '">';
+				str += data.results[i].title;
+				str += '</a></li>';
+			}
+			str += '</ul>';
+			$('#results').html(str);
+		});
+	});
+</script>
+
+<div id='results'></div>
