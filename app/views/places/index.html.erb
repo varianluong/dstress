@@ -6,7 +6,7 @@
 				$('#map').html('<iframe width="450" height="250" frameborder="0" style="border:0" src=' + data.url + '></iframe>');
 				$('#results').html('');
 				for(var i = 0; i < data.results.length; i++){
-					$('#results').append('<li><p>' + data.results[i].name + '</p>' + '<p>' + data.results[i].address + '</p></li>');
+					$('#results').append('<li class="places-li"><p>' + data.results[i].name + '</p>' + '<p>' + data.results[i].address + '</p></li>');
 				}
 				//console.log($('#map').attr(html));
 			}, 'json');
@@ -16,18 +16,18 @@
 </script>
 
 <div id='background-image'></div>
-<div id='container'>
+<div id='places-container'>
 	<div class='row'>
 
 		<div class='col-sm-4 col-sm-offset-3'>
 			<div id='map'>
-				<iframe width='450' height='250' frameborder='0' style='border:1px solid black'></iframe>
+				<iframe width='450' height='250' frameborder='0' style='border:0' src='<%= @url %>'></iframe>
 			</div>
 			<div id='resultsdiv'><ul id='results'></ul></div>
 		</div>
 
 		<div class='col-sm-3 col-sm-offset-1'>
-			<div class='row'><h3>Where to?</h3></div>
+			<div class='row' id='places-h3'><h3>Where to?</h3></div>
 			<div class='row'>
 				<form id='mapform' method='post' action='places/geturl'>
 					<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>

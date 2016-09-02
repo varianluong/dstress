@@ -6,10 +6,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def get_results
+		stress_reason = Reason.find(session[:stress_reason]).stress_reason
 		if params[:query]
 			query = params[:query]
 		else
-			query = "articles+about+#{session[:stress_reason]}+stress"
+			query = "articles+about+#{stress_reason}+stress"
 		end
 		url = "https://www.googleapis.com/customsearch/v1?key=#{Figaro.env.GOOGLE_API_KEY}&cx=#{Figaro.env.GOOGLE_CUSTOM_SEARCH_CX}&q=#{query}&fields=items"
 		uri = URI.parse(url)

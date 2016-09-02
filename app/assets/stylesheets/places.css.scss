@@ -12,10 +12,10 @@
 	background-size: cover;
 	height: 800px;
 	width: 1280px;
-	-webkit-filter: blur(2px);
+	-webkit-filter: blur(1px);
 }
 
-#container {
+#places-container {
 	overflow: auto;
 	position: relative;
 	left: 0;
@@ -25,7 +25,7 @@
 	margin-right: 20px;
 }
 
-h3{
+#places-h3{
 	color: white;
 }
 
@@ -33,11 +33,7 @@ h3{
 	margin-top: 10px;
 }
 
-ul {
-	list-style-type: none;
-}
-
-li{
+.places-li{
 	color: white;
 	border-bottom: 1px solid white;
 }
@@ -46,6 +42,7 @@ li{
 	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
 	padding-right: 100px;
 	padding-left: 100px;
+	list-style-type: none;
 }
 
 $body-bg: transparent;

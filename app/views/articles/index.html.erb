@@ -2,19 +2,26 @@
 	$(document).ready(function(){
 		var url = '/articles/get_results';
 		$.get(url, function(data){
-			//console.log(data)
-			var str = '<ul>';
+			console.log(data)
+			var str = '';
 			for(var i = 0; i < data.results.length; i++){
-				str += '<li><a href="';
+				str += '<li class="articles-li"><a href="';
 				str += data.results[i].link;
-				str += '">';
+				str += '" class="articles-a">';
 				str += data.results[i].title;
 				str += '</a></li>';
 			}
-			str += '</ul>';
-			$('#results').html(str);
+			$('#articles-results').html(str);
 		});
 	});
 </script>
 
-<div id='results'></div>
+<div id='articles-container'></div>
+<div id='articles'>
+	<div class='row'>
+		<div class='col-sm-6 col-sm-offset-6'>
+			<h1>Check out these articles:</h1>
+			<ul id='articles-results'></ul>
+		</div>
+	</div>
+</div>

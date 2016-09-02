@@ -1,3 +1,41 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#articles-container{
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: block;
+	background: url(studying-puppy2.jpg) no-repeat center center fixed;
+	background-size: cover;
+	height: 1024px;
+	width: 1280px;
+}
+
+#articles {
+	overflow: auto;
+	position: relative;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.articles-li{
+	border-bottom: 1px solid white;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
+}
+
+#articles-results{
+	list-style-type: none;
+	
+}
+
+.articles-a{
+	color: #663d00;
+}
