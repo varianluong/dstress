@@ -16,7 +16,7 @@
       <ul class='nav navbar-nav'>
         <% if current_user %>
           <li><a href="/">Home</a></li>
-          <li><a href="#">Hotline</a></li>
+          <li><a href="/emergency">Hotline</a></li>
           <li><a href='/users/<%= current_user.id %>'><%= current_user.first_name %></a></li>
           <form id="logout" action='/sessions' method='post' class='navbar-form'>
             <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>

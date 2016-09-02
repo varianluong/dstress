@@ -8,7 +8,7 @@
 	right: 0;
 	z-index: 1;
 	display: block;
-	background: url(dock.jpg) no-repeat center center fixed;
+	background: url(dock2.jpg) no-repeat center center fixed;
 	background-size: cover;
 	height: 800px;
 	width: 1280px;
@@ -42,8 +42,10 @@ li{
 	border-bottom: 1px solid white;
 }
 
-#resultsdiv {
-	-webkit-transition: height 5s;
+#results {
+	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+	padding-right: 100px;
+	padding-left: 100px;
 }
 
 $body-bg: transparent;
