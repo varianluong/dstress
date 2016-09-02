@@ -3,6 +3,9 @@ require 'net/http'
 require 'open-uri'
 class ArticlesController < ApplicationController
 	def index
+		if not logged_in?
+			return redirect_to '/sessions/new'
+		end
 		# puts session[:stress_reason]
 		if not session[:stress_reason]
 			return redirect_to '/'

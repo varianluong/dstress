@@ -3,8 +3,14 @@ require 'net/http'
 require 'open-uri'
 class PlacesController < ApplicationController
 	def index
+		if not logged_in?
+			return redirect_to '/sessions/new'
+		end
 		user = User.find(session[:user_id])
 		zipcode = user.location
+		if not zipcode
+			return redirect_to '/'
+		end
 		@url = "https://www.google.com/maps/embed/v1/search?key=#{Figaro.env.GOOGLE_API_KEY}&q=#{zipcode}"
 	end
 
