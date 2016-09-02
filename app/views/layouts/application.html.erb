@@ -17,7 +17,8 @@
         <% if current_user %>
           <li><a href="/">Home</a></li>
           <li><a href="#">Hotline</a></li>
-          <li><a href='/users/<%= current_user.id %>'><%= current_user.first_name %></a></li>
+          <li><a href="/solutions">Solutions</a></li>
+          <!-- <a href='/users/<%= current_user.id %>'></a> --><li><%= current_user.first_name %></li>
           <form id="logout" action='/sessions' method='post' class='navbar-form'>
             <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
             <input type='hidden' name='_method' value='delete'>

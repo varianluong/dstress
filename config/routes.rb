@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'images/index'
-
-  get 'images/new'
-
   root 'stresses#index'
 
   get 'sessions/new'   => 'sessions#new' 
