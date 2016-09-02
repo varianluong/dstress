@@ -104,8 +104,3 @@ users = User.create([
   { handle: 'bobby', first_name: 'Bob', last_name: 'Bobby', email: 'bob@bobby.com', password: 'password', password_confirmation: 'password', location: 94539 }
 ])
 
-notifications = Notification.create([
-  { name: 'Harmann Bajwa', phone_number: '7202736622', time: '05:00:00'}
-])
-
-
