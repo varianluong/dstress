@@ -17,18 +17,25 @@ Rails.application.routes.draw do
   post 'stresses'      => 'stresses#create'
 
   get 'solutions'      => 'solutions#index'
-
   get 'chats'          => 'chats#index'
   post 'chats'          => 'chats#create'
 
-
-
+  get 'emergency'      => 'stresses#emergency' 
+  
   ## games
   get 'games/index' => 'games#index'
   get 'games'       => 'games#index'
   ## images
   resources :images
+  
+  ## media
+  get 'media' => 'media#index'
+  get 'media/cats' => 'media#cat'
+  get 'media/dogs' => 'media#dog'
 
+  get 'media/med' => 'media#med'
+  get 'media/bossa' => 'media#bossa'
+  get 'media/cafe' => 'media#cafe'
 
   get '/articles' => 'articles#index'
   get '/articles/get_results(/:query)' => 'articles#get_results'

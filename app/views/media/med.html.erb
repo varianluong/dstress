@@ -1,0 +1,21 @@
+<h2>Begin meditation...</h2>
+<audio id="myAudio">
+<source src="/assets/med-19d49bd719ba6377b16296cf325aac37.mp3"
+         type='audio/mp3'>
+ <source src="/assets/med-19d49bd719ba6377b16296cf325aac37.mp3"
+         type='audio/ogg; codecs=vorbis'>
+ Your user agent does not support the HTML5 Audio element.
+</audio>
+<button type="button" onclick="aud_play_pause()">Play/Pause</button>
+<script>
+function aud_play_pause() {
+  var myAudio = document.getElementById("myAudio");
+  if (myAudio.paused) {
+    myAudio.play();
+  } else {
+    myAudio.pause();
+  }
+}
+</script>
+<br>
+<a href="/media">Back</a>
