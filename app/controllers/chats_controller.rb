@@ -1,6 +1,12 @@
 class ChatsController < ApplicationController
   # return all the responses for the response type chosen and user's stress reason and response type
   def index
+    if not session[:response_type] or not session[:stress_reason]
+      flash[:messages] = []
+      flash[:messages].push({ 'status' => 'error', 'text' => "Please select stress reason and response type"}) 
+      return redirect_to "/"
+    end
+
     @triggers = Sensitivity.find(session[:response_type]).triggers
     @responses = Sensitivity.find(session[:response_type]).responses_given.select("content")
     @responses = @responses.map { |r| r.content }

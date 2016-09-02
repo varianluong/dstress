@@ -19,12 +19,8 @@
           <li><a href="/emergency">Hotline</a></li>
           <li><a href="/solutions">Solutions</a></li>
           <li><a href='/users/<%= current_user.id %>'><%= current_user.first_name %></a></li>
-          <form id="logout" action='/sessions' method='post' class='navbar-form'>
-            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-            <input type='hidden' name='_method' value='delete'>
-            <input type='submit' class='btn btn-default' value='Log Out'>
-          </form>
-        <li>
+
+          <!-- play music -->
           <audio id="myAudio">
             <source src="/assets/book-e9fd4a372531b0780cefc0e7ab55aff6.mp3" type='audio/mp3'>
             <source src="/assets/book-e9fd4a372531b0780cefc0e7ab55aff6.mp3" type='audio/ogg; codecs=vorbis'>
@@ -40,7 +36,14 @@
             }
           }
           </script>
-        </li>
+
+          <!-- logout -->
+          <form id="logout" action='/sessions' method='post' class='navbar-form'>
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+            <input type='hidden' name='_method' value='delete'>
+            <input type='submit' class='btn btn-default' value='Log Out'>
+          </form>
+
       </ul>
     </div>
   </div>
