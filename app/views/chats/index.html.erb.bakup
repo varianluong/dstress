@@ -1,0 +1,115 @@
+<div class="container" id="body">
+  <script>
+    $(document).ready( function() {
+      // scroll to the bottom of the div
+      var chatDiv = document.getElementById("chat_body");
+      var isScrolledToBottom = chatDiv.scrollHeight - chatDiv.clientHeight <= chatDiv.scrollTop + 1;
+
+      /**
+       * Shuffles array in place.
+       * @param {Array} a items The array containing the items.
+       */
+      function shuffle (array) {
+        var i = 0, j = 0, temp = null
+
+        for (i = array.length - 1; i > 0; i -= 1) {
+          j = Math.floor(Math.random() * (i + 1))
+          temp = array[i]
+          array[i] = array[j]
+          array[j] = temp
+        }
+        return array;
+      }
+      var shuffled = shuffle(<%= raw @responses %>);
+
+      $("#chatform").submit(function() {
+        // display the user input
+        var html_str = "";
+        var input_val = $("input#response_request").val();
+        html_str += "<div style='clear: both;'></div>";
+        html_str += "<p class='user'>" + input_val + "</p>";
+        html_str += "<div style='clear: both;'></div>";
+        $("#chat_body").append(html_str);
+
+        // submit data to chats#create controller and get json data in response
+        $.post( $(this).attr('action'), $(this).serialize(), function(data) {
+            if (data.status == 'success') {
+              if (!shuffled.length) {
+                shuffled = shuffle(<%= raw @responses %>);
+              }
+              var response = shuffled.pop();
+              $("#chat_body").append("<p class='bot'>" + response + "</p>");
+            } else {
+              $("#chat_body").append("<p class='bot'>" + data.message + "</p>");
+            }
+            
+            $("input#response_request").val('');
+
+            if (isScrolledToBottom) { chatDiv.scrollTop = chatDiv.scrollHeight - chatDiv.clientHeight; }
+          },
+          "json"
+        );
+        return false;
+      });
+
+      // copies the trigger input from dropdown menu to input box
+      $("#trigger_input").change( function() {
+        var input_val = this.value;
+        $("#response_request").val(this.value);
+        document.getElementById("gsc-i-id1").focus();
+        $("#gsc-i-id1").val(input_val);
+      });
+    });
+
+  </script>
+
+
+  <div class="chat">
+    <div class="chat_header">
+      Hi <%= current_user.first_name %>, I'm DS - You are stressed about <%= @stress_reason %>. How may I help?
+    </div>
+
+    <!-- chat dialogue between chatbot and user -->
+    <div class="chat_body" id="chat_body">
+      <div class="bottom_aligner"></div> <!-- enables pushing content to bottom of div -->
+    </div>
+
+    <!-- input box for request -->
+    <div class="chat_input">
+      <form action="/chats" method="post" id="chatform">
+        <div class="col-md-7 form-group" name="request" id="request">
+          <label class="sr-only" for="response_request"></label>
+          <input type="text" name="response[request]" class="form-control" id="response_request" placeholder="DStress">
+        </div>
+        <div class="col-md-3 form-group" name="trigger" id="trigger">
+          <label class="sr-only" for="response_trigger"></label>
+          <select name="response[trigger]" id="trigger_input" class="form-control">
+              <option value="" selected>Choose a request</option>
+            <% @triggers.each do |t| %>
+              <option value="<%= t.content %>"><%= t.content %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col-md-2"><button class="btn btn-success btn-sm">Submit</button></div>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      </form>
+    </div>
+  </div>
+
+  <!-- Google custom search bar -->
+  <div>
+    <script>
+      (function() {
+        var cx = '015890396352610423621:e6mogwf48ve';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
+  </div>
+
+</div> <!-- end div#body -->

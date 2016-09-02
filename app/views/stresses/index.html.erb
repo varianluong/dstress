@@ -17,10 +17,10 @@
         <select name="stress[reason]" id="stress_reason">
           <option value='' selected>Choose a reason</option>
           <% @reasons.each do |r|  %>
-             <% if session[:stress_reason] == r.stress_reason %>
-               <option value="<%= r.stress_reason %>" selected><%= r.stress_reason %></option> 
+             <% if session[:stress_reason].to_i == r.id %>
+               <option value="<%= r.id %>" selected><%= r.stress_reason %></option>
              <% else %>
-               <option value="<%= r.stress_reason %>"><%= r.stress_reason %></option> 
+               <option value="<%= r.id %>"><%= r.stress_reason %></option>
              <% end %>
           <% end %>
         </select>
@@ -32,10 +32,10 @@
         <select name="stress[response_type]" id="stress_response_type">
           <option value='' selected>Choose a response</option>
           <% @sensitivities.each do |s|  %>
-             <% if session[:response_type] == s.level %>
-               <option value="<%= s.level %>" selected><%= s.level %></option> 
+             <% if session[:response_type].to_i == s.id %>
+               <option value="<%= s.id %>" selected><%= s.level %></option>
              <% else %>
-               <option value="<%= s.level %>"><%= s.level %></option> 
+               <option value="<%= s.id %>"><%= s.level %></option>
              <% end %>
           <% end %>
         </select>

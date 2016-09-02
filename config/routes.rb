@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   post 'stresses'      => 'stresses#create'
 
   get 'solutions'      => 'solutions#index'
+
   get 'chats'          => 'chats#index'
+  post 'chats'          => 'chats#create'
   
 
 
