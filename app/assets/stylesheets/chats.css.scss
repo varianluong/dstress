@@ -5,16 +5,14 @@
 div.chat {
   width: 800px;
   height: 600px;
-  border: 1px solid #eee;
   margin: 5% auto;
-  border-radius: 2%;
 }
 
 div.chat_header {
   width: 800px;
   height: 50px;
-  //border: 1px solid #eee;
-  border-radius: 2%;
+  border: 1px solid #eee;
+  border-radius: 7px 7px 0 0;
   padding: 10px;
 
 }
@@ -23,14 +21,42 @@ div.chat_body {
   width: 800px;
   height: 500px;
   border: 1px solid #eee;
-  overflow: scroll;
+  overflow: auto;
   padding: 10px;
 }
 
 div.chat_input {
   width: 800px;
   height: 50px;
-  //border: 1px solid #eee;
+  border: 1px solid #eee;
   padding: 10px;
-  border-radius: 2%;
+  border-radius: 0 0 7px 7px;
+}
+
+p.user {
+  text-align: center;
+  background-color: #007BB6;
+  color: white;
+  height: 30px;
+  border-radius: 8px;
+  float: right;
+  padding: 4px;
+}
+
+p.bot {
+  text-align: center;
+  background-color: #A9A9A9;
+  color: white;
+  height: 30px;
+  border-radius: 8px;
+  float: left;
+  padding: 4px;
+}
+
+// push content to the bottom of the div
+.bottom_aligner {
+  display: inline-block;
+  height: 100%;
+  vertical-align: bottom;
+  width: 0px;
 }

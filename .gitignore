@@ -18,9 +18,7 @@
 *.DS_store
 *.swp
 
-#
-
-
+/db/schema.rb
 
 # Ignore application configuration
 /config/application.yml

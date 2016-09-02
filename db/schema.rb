@@ -67,10 +67,12 @@ ActiveRecord::Schema.define(version: 20160831202551) do
     t.integer  "response_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sensitivity_id"
   end
 
   add_index "solutions", ["reason_id"], name: "index_solutions_on_reason_id", using: :btree
   add_index "solutions", ["response_id"], name: "index_solutions_on_response_id", using: :btree
+  add_index "solutions", ["sensitivity_id"], name: "index_solutions_on_sensitivity_id", using: :btree
 
   create_table "tips", force: true do |t|
     t.string   "tip"
