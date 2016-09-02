@@ -3,6 +3,10 @@ require 'net/http'
 require 'open-uri'
 class ArticlesController < ApplicationController
 	def index
+		# puts session[:stress_reason]
+		if not session[:stress_reason]
+			return redirect_to '/'
+		end
 	end
 
 	def get_results
@@ -13,6 +17,7 @@ class ArticlesController < ApplicationController
 			query = "articles+about+#{stress_reason}+stress"
 		end
 		url = "https://www.googleapis.com/customsearch/v1?key=#{Figaro.env.GOOGLE_API_KEY}&cx=#{Figaro.env.GOOGLE_CUSTOM_SEARCH_CX}&q=#{query}&fields=items"
+		# url = "https://cse.google.com/cse/publicurl?cx=#{Figaro.env.GOOGLE_CUSTOM_SEARCH_CX}"
 		uri = URI.parse(url)
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true

@@ -117,10 +117,6 @@ ActiveRecord::Schema.define(version: 20160902005704) do
     t.integer  "location"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "customdartboard_file_name"
-    t.string   "customdartboard_content_type"
-    t.integer  "customdartboard_file_size"
-    t.datetime "customdartboard_updated_at"
   end
 
 end
