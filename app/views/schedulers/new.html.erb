@@ -1,22 +1,32 @@
-<div class="notif_input">
-  <h3>Reminders</h3>
+<div id="notif_input">
+  <div class="container">
+    <div class="row">
 
-  <form action="/schedulers" method="post">
-    <p>
-      <label for="phone_number">Phone Number: </label>
-      <input type="text" name="scheduler[phone]">
-    </p>
-    <p>
-      <label for="frequency">Start Daily Reminders: </label>
-      <input type="date" name="scheduler[frequency]">
-      <input type="time" name="scheduler[frequency]">
-    </p>
-  <p>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="submit" value="Set Reminder">
-  </p>
-  </form>
-</div>
+      <div class="col-md-5"></div>
+
+      <div class="col-md-7">
+        <h3>Reminders</h3>
+
+        <form action="/schedulers" method="post">
+          <p>
+            <label for="phone_number">Phone Number: </label>
+            <input type="text" name="scheduler[phone]">
+          </p>
+          <p>
+            <label for="frequency">Start Daily Reminders: </label>
+            <input type="date" name="scheduler[frequency]">
+            <input type="time" name="scheduler[frequency]">
+          </p>
+        <p>
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="submit" value="Set Reminder">
+        </p>
+        </form>
+      </div> <!-- end div.col-md-7 -->
+
+    </div> <!-- end div.row -->
+  </div> <!-- end div.container -->
+</div> <!-- end div.notif_input -->
 
 
 
