@@ -24,6 +24,23 @@
             <input type='hidden' name='_method' value='delete'>
             <input type='submit' class='btn btn-default' value='Log Out'>
           </form>
+        <li>
+          <audio id="myAudio">
+            <source src="/assets/book-e9fd4a372531b0780cefc0e7ab55aff6.mp3" type='audio/mp3'>
+            <source src="/assets/book-e9fd4a372531b0780cefc0e7ab55aff6.mp3" type='audio/ogg; codecs=vorbis'>
+          </audio>
+          <input type="submit" class='btn btn-default' onclick="aud_play_pause()" value="Play/Pause">
+          <script>
+          function aud_play_pause() {
+            var myAudio = document.getElementById("myAudio");
+            if (myAudio.paused) {
+              myAudio.play();
+            } else {
+              myAudio.pause();
+            }
+          }
+          </script>
+        </li>
       </ul>
     </div>
   </div>
