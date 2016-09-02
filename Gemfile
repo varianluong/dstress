@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
+
+gem "figaro"
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
@@ -40,6 +42,8 @@ gem 'spring',        group: :development
 
 
 group :development, :test do
+  gem 'tzinfo-data'
+
   gem "hirb"
   gem "rails-footnotes", ">= 4.0.0"
   gem "quiet_assets"
@@ -56,9 +60,15 @@ gem "bcrypt", "~> 3.1.7"
 # paperclip for image upload
 gem "paperclip", "~> 4.2"
 
-
 gem 'therubyracer'  # If using Ruby
 gem 'less-rails-bootstrap'
 
-
 gem 'figaro'
+
+#for reminder_feature
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'twilio-ruby', '~> 4.11.1'
+gem "rufus-scheduler"
+
+

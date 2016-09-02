@@ -8,6 +8,7 @@
         height: 60%;
     }
     .gamesNavbtn {
+        width: 8em;
         background-color: blue;
         color: white;
     }
@@ -71,26 +72,40 @@
         animation-duration: 300s;  /* large duration because bug (reappears after end of animation */
     }
     .tomato1 { 
-        width: 260px;   /* 292 */
-        height: 205px;  /* 230 */
+        width: 292px;   /* 292 */
+        height: 230px;  /* 230 */
     }
     .tomato2 { 
-        width: 120px;   /* 150 */
-        height: 108px;  /* 136 */
+        width: 150px;   /* 150 */
+        height: 136px;  /* 136 */
     }
-    .shoe {
+    .shoe-anim1 {
         /* Chrome, Safari, Opera */
-        -webkit-animation-name: toss_bounce;
+        -webkit-animation-name: toss_bounce1;
         -webkit-animation-delay: 0s;
+        -webkit-animation-duration: 300s;
         
+        animation-name: toss_bounce1;
+        animation-delay: 0s;
+        animation-duration: 300s;
+    }
+    .shoe-anim2 {
+        /* Chrome, Safari, Opera */
+        -webkit-animation-name: toss_bounce2;
+        -webkit-animation-delay: 0s;
+        -webkit-animation-duration: 300s;
 
-        animation-name: toss_bounce;
+        animation-name: toss_bounce2;
         animation-delay: 0s;
         animation-duration: 300s;
     }
     .shoe1 {
-        width: 182px;   /* 366 */
-        height: 223px;  /* 449 */
+        width: 110px;   /* 306 */
+        height: 150px;  /* 416 */
+    }
+    .shoe2 {
+        width: 115px;   /* 259 */
+        height: 142px;  /* 317 */
     }
     /* Standard syntax */
     @keyframes splat_nofade {
@@ -100,22 +115,32 @@
     }
     @keyframes splat_fade {
         0%    {width: 275%; height: 275%;}
-        0.03% {width: 90%; height: 90%}
-        5%    {opacity: 0;}
+        0.02% {width: 100%; height: 100%}
+        1.5%    {opacity: 1;}
+        4%    {opacity: 0;} /* 5% */
         100%  {opacity: 0;}
     }
     @keyframes splat_slide_fade {
         0%    {width: 350%; height: 350%;}
-        0.02% {width: 70%; height: 70%}
+        0.05% {width: 70%; height: 70%}
         0.5%  {opacity: 1; padding-top:0em;}
-        3.5%  {opacity: 0; padding-top:2em;}
+        5%  {opacity: 0; padding-top:2em;}
         100%  {opacity: 0; padding-top:2em;}
     } 
-    @keyframes toss_bounce {
-        0%    {width: 350%; height: 350%;}
-        0.02% {width: 50%; height: 50%}
-        0.03%  {opacity: 1; padding-top: 0em;}
-        0.3%  {opacity: 0; padding-top: 15em; margin-left: 3em;}
+    @keyframes toss_bounce1 {
+        0%    {width: 350%; height: 350%; transform: rotate(-50deg);}
+        0.12% {width: 50%; height: 50%; transform: rotate(200deg);}
+        0.15%  {opacity: 1; transform: rotate(210deg); margin-left: 0em; margin-top: 0em; }
+        0.2%  {}
+        0.5%  {opacity: 0; transform: rotate(275deg); margin-left: 3em; margin-top: 15em; }
+        100%  {opacity: 0;}
+    } 
+    @keyframes toss_bounce2 {
+        0%    {width: 350%; height: 350%; transform: rotate(100deg); }
+        0.1% {width: 50%; height: 50%; transform: rotate(-90deg);}
+        0.11%  {opacity: 1}
+        0.13%  {opacity: 1; margin-top: 2em; margin-right: 1em; margin-top: 1em;}
+        0.5%  {opacity: 0; transform: rotate(-120deg); margin-top: 15em; margin-right: 5em;}
         100%  {opacity: 0;}
     } 
 </style>
@@ -124,64 +149,85 @@
     var x_adjust = -73;
     var y_adjust = -75;
     var totalObjects = 0;
-    var MAXTOTALOBJECTS = 100;
+    var MAXTOTALOBJECTS = 99;
     var throwObjects = 
     { 
         "Dart1" :  {   "imageFilename":"Dart-w-shadow-small.png",
                             "x_offset":63+x_adjust, 
                             "y_offset":6+y_adjust,
-                            "cssstylename": "dart dart1",
+                            "cssStylename": "dart dart1",
                             "width":94,   /* 94 */
                             "height":117  /* 117 */
                     },
         "Dart2" :  {   "imageFilename":"Dart-w-shadow-small2.png",
                         "x_offset":2+x_adjust, 
                         "y_offset":7+y_adjust,
-                        "cssstylename": "dart dart2",
+                        "cssStylename": "dart dart2",
                         "width":134,  /* 134 */
                         "height":112  /* 112 */
                     },
         "Mud1" :    {   "imageFilename":"mud-splatter1.png",
                         "x_offset":-27+x_adjust, 
                         "y_offset":-5+y_adjust,
-                        "cssstylename": "mud mud1",
+                        "cssStylename": "mud mud1",
                         "width":231,  /* 231 */
                         "height":198  /* 198 */
                     },
         "Mud2" :    {   "imageFilename":"mud-splatter2.png",
                         "x_offset":+x_adjust, 
                         "y_offset":-10+y_adjust,
-                        "cssstylename": "mud mud2",
+                        "cssStylename": "mud mud2",
                         "width":156,  /* 156 */
                         "height":162  /* 162 */
                     },
         "Mud3" :    {   "imageFilename":"mud-splatter3.png",
                         "x_offset":-5+x_adjust, 
                         "y_offset":-5+y_adjust,
-                        "cssstylename": "mud mud3",
+                        "cssStylename": "mud mud3",
                         "width":159,  /* 159 */
                         "height":129  /* 129 */
                     },
         "Tomato1" : {   "imageFilename":"tomato-splatter-small1.png",
                         "x_offset":2+x_adjust, 
                         "y_offset":0+y_adjust,
-                        "cssstylename": "tomato tomato1",
+                        "cssStylename": "tomato tomato1",
                         "width":180,  /* 180 */
                         "height":142  /* 142 */
                     },
         "Tomato2" : {   "imageFilename":"tomato-splatter-small2.png",
                         "x_offset":1+x_adjust, 
                         "y_offset":7+y_adjust,
-                        "cssstylename": "tomato tomato2",
+                        "cssStylename": "tomato tomato2",
                         "width":150,  /* 150 */
                         "height":136  /* 136 */
                     },
-        "Shoe" :    {   "imageFilename":"converse-shoe.png",
+        "Shoe1" :   {   "imageFilename":"converse-shoe.png",
                         "x_offset":1+x_adjust, 
                         "y_offset":7+y_adjust,
-                        "cssstylename": "shoe shoe1",
-                        "width":366,  /* 366 */
-                        "height":449  /* 449 */
+                        "cssStylename": "shoe-anim1 shoe1",
+                        "width":306,  /* 306 */
+                        "height":416  /* 416 */
+                    },
+        "Shoe2" :    {   "imageFilename":"converse-shoe.png",
+                         "x_offset":1+x_adjust, 
+                         "y_offset":7+y_adjust,
+                         "cssStylename": "shoe-anim2 shoe1",
+                         "width":306,  /* 306 */
+                         "height":416  /* 416 */
+                    },
+        "Shoe3" :   {   "imageFilename":"heel.png",
+                         "x_offset":1+x_adjust, 
+                         "y_offset":7+y_adjust,
+                         "cssStylename": "shoe-anim1 shoe2",
+                         "width":259,  /* 259 */
+                         "height":317  /* 317 */
+                    },
+        "Shoe4" :   {    "imageFilename":"heel.png",
+                         "x_offset":1+x_adjust, 
+                         "y_offset":7+y_adjust,
+                         "cssStylename": "shoe-anim2 shoe2",
+                         "width":259,  /* 259 */
+                         "height":317  /* 317 */
                     },
     }
     // var divXOffset = ; //px
@@ -197,6 +243,8 @@
                 totalObjects+=1;
                 clicked(e, offset);
             }
+            else
+                alert("Maximum number of objects (" + MAXTOTALOBJECTS + ") reached! Click \"Clear board\" button to resume.");
         });
 
         $("#resetbtn").click(function(e){
@@ -229,7 +277,11 @@
                 break;
             }
             case "Shoes": {
-                objectname = "Shoe";
+                var r = Math.floor(Math.random()*4)+1;
+                if (r == 1) objectname = "Shoe1";
+                else if (r == 2) objectname = "Shoe2"; 
+                else if (r == 3) objectname = "Shoe3";
+                else objectname = "Shoe4"; 
                 break;
             }
             default : { //"Darts"
@@ -243,7 +295,7 @@
         var objXPosEM = (e.pageX - offset.left + obj["x_offset"]) *.065 - Math.pow(e.pageX, 1.001) * .001;
         var objYPosEM = (e.pageY - offset.top + obj["y_offset"]) *.065 - Math.pow(e.pageY, 1.001) * .001;
         var objImageFilename = obj["imageFilename"];
-        var objCSSstylename = obj["cssstylename"];
+        var objCSSstylename = obj["cssStylename"];
         var objWidth = obj["width"];
         var objHeight = obj["height"];
         
@@ -252,8 +304,9 @@
     }
 </script>
 
-<div id="navdiv">
-    <button id="dartboardgamebtn" class="gamesNavbtn">Dartboard</button>
+<div id="navdiv" style="border-bottom: 2px solid grey; padding: 1em 10em ">
+    <button id="dartboardgamebtn" class="gamesNavbtn">Humor</button>
+    <button id="dartboardgamebtn" class="gamesNavbtn">Mindfulness</button>
 </div>
 <div id="maindiv">
     <div class="contentdiv" id="dartimage" style="background:url('<%= @imgurl %>'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
@@ -261,16 +314,16 @@
     <div class="contentdiv">
         <label for="ammotype">Ammo type</label><br>
         <select id="ammotype">
-            <option selected="selected" value="Darts">Darts</option>
+            <option value="Darts" selected="selected">Darts</option>
             <option value="Mud">Mud</option>
-            <option value="Tomatoes">Tomatoes</option>
             <option value="Shoes">Shoes</option>
+            <option value="Tomatoes">Tomatoes</option>
         </select>
         <p><button id="resetbtn">Clear board</button></p>
         <p>
             <form action="/images" enctype="multipart/form-data" id="edit_pic" method="post">
                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                <label for="image[dartboard]">Custom image:</label>
+                <label for="image_dartboard">Custom image:</label>
                 <input id="image_dartboard" name="image[dartboard]" type="file">
                 <br>
                 <input name="commit" type="submit" value="Upload">

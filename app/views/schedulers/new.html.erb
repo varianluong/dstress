@@ -1,0 +1,24 @@
+<div class="notif_input">
+  <h3>Reminders</h3>
+
+  <form action="/schedulers" method="post">
+    <p>
+      <label for="phone_number">Phone Number: </label>
+      <input type="text" name="scheduler[phone]">
+    </p>
+    <p>
+      <label for="frequency">Start Daily Reminders: </label>
+      <input type="date" name="scheduler[frequency]">
+      <input type="time" name="scheduler[frequency]">
+    </p>
+  <p>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Set Reminder">
+  </p>
+  </form>
+</div>
+
+
+
+
+

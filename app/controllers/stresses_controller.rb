@@ -26,6 +26,10 @@ class StressesController < ApplicationController
       redirect_to "/"
     end
   end
+
+  def emergency
+    @url ="http://maps.googleapis.com/maps/api/js?key=#{Figaro.env.GOOGLE_HOTLINE_KEY}&v=3.exp&libraries=places"
+  end
   
   private
 
