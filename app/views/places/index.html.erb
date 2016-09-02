@@ -11,37 +11,39 @@
 				//console.log($('#map').attr(html));
 			}, 'json');
 			return false;
-		});
+		});	
 	});
 </script>
 
-<div class='row'>
+<div id='background-image'></div>
+<div id='container'>
+	<div class='row'>
 
-	<div class='col-sm-4 col-sm-offset-3'>
-		<div id='map'>
-			<iframe width='450' height='250' frameborder='0' style='border:1px solid black'></iframe>
+		<div class='col-sm-4 col-sm-offset-3'>
+			<div id='map'>
+				<iframe width='450' height='250' frameborder='0' style='border:1px solid black'></iframe>
+			</div>
+			<div id='resultsdiv'><ul id='results'></ul></div>
 		</div>
-	</div>
 
-	<div class='col-sm-3 col-sm-offset-1'>
-		<div class='row'><h3>Where to?</h3></div>
-		<div class='row'>
-			<form id='mapform' method='post' action='places/geturl'>
-				<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
-				<select name='place'>
-					<option value='gyms'>Gyms</option>
-					<option value='yoga'>Yoga Studios</option>
-					<option value='karaoke'>Karaoke Bars</option>
-				</select>
-				<input type='submit' value='Search'>
-			</form>
+		<div class='col-sm-3 col-sm-offset-1'>
+			<div class='row'><h3>Where to?</h3></div>
+			<div class='row'>
+				<form id='mapform' method='post' action='places/geturl'>
+					<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+					<select name='place'>
+						<option value='gyms'>Gyms</option>
+						<option value='yoga'>Yoga Studios</option>
+						<option value='karaoke'>Karaoke Bars</option>
+					</select>
+					<input type='submit' value='Search'>
+				</form>
+			</div>
 		</div>
+
 	</div>
 
-</div>
-
-<div class='row'>
-	<div class='col-sm-4 col-sm-offset-3'>
-		<ul id='results'></ul>
-	</div>
+		<!-- <div class='col-sm-4 col-sm-offset-3'>
+			<ul id='results'></ul>
+		</div> -->
 </div>

@@ -28,3 +28,7 @@ p.success {
 p.error {
   color: red;
 }
+
+.navbar {
+	margin: 0;
+}

@@ -2,3 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#background-image {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: block;
+	background: url(dock.jpg) no-repeat center center fixed;
+	background-size: cover;
+	height: 800px;
+	width: 1280px;
+	-webkit-filter: blur(2px);
+}
+
+#container {
+	overflow: auto;
+	position: relative;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+h3{
+	color: white;
+}
+
+.row{
+	margin-top: 10px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li{
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+#resultsdiv {
+	-webkit-transition: height 5s;
+}
+
+$body-bg: transparent;
