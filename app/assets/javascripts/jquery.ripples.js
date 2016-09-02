@@ -2,7 +2,6 @@
  * jQuery Ripples plugin v0.5.1 / http://github.com/sirxemic/jquery.ripples
  * MIT License
  * @author sirxemic / http://sirxemic.com/
- */
 
 (function(factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -665,7 +664,7 @@
 
 		/**
 		 *  Public methods
-		 */
+		 * /
 		drop: function(x, y, radius, strength) {
 			gl = this.context;
 
@@ -790,4 +789,4 @@
 		return this;
 	};
 
-}));
+}));*/

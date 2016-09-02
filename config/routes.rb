@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   get '/places' => 'places#index'
   post '/places/geturl' => 'places#geturl'
-  get 'schedulers' => 'schedulers#index'
+  get 'schedulers' => 'schedulers#new'
   get 'schedulers/new' => 'schedulers#new'
   post 'schedulers' => 'schedulers#create'
 
