@@ -1,6 +1,7 @@
-<div class="container" id="body">
+<div class="container" id="chatpage">
   <script>
     $(document).ready( function() {
+
       // scroll to the bottom of the div
       var chatDiv = document.getElementById("chat_body");
       var isScrolledToBottom = chatDiv.scrollHeight - chatDiv.clientHeight <= chatDiv.scrollTop + 1;
@@ -56,13 +57,12 @@
       $("#trigger_input").change( function() {
         var input_val = this.value;
         $("#response_request").val(this.value);
-        document.getElementById("gsc-i-id1").focus();
-        $("#gsc-i-id1").val(input_val);
+        //document.getElementById("gsc-i-id1").focus();
+        //$("#gsc-i-id1").val(input_val);
       });
     });
 
   </script>
-
 
   <div class="chat">
     <div class="chat_header">

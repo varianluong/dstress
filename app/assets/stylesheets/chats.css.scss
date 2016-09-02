@@ -5,7 +5,8 @@
 div.chat {
   width: 800px;
   height: 600px;
-  margin: 5% auto;
+  margin: 40px auto;
+  color: white;
 }
 
 div.chat_header {
@@ -45,7 +46,7 @@ p.user {
 
 p.bot {
   text-align: center;
-  background-color: #A9A9A9;
+  background-color: #525252;
   color: white;
   height: 30px;
   border-radius: 8px;
@@ -60,3 +61,36 @@ p.bot {
   vertical-align: bottom;
   width: 0px;
 }
+
+#chatpage2:before{
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+
+  ), url(zen_bamboo.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+#chatpage {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+
+  ), url(zen3.jpg);
+
+  //background: url(zen_bamboo.jpg) no-repeat;
+  position:relative;
+  background-size: 100% 100%;
+  width: 1420px;
+  height: 900px;
+
+}
+
