@@ -18,49 +18,7 @@ rails g model Scheduler phone:integer frequency:string reminder:references user:
 
 rails g model Tip tip:string reminder:references
 
-
-Reminder
-reminder_type => [
-  "quote",
-  "exercise",
-  "mindful moment",
-]
+rails g migration AddTriggerRefToSolutions trigger:references
 
 
-Reason
-stress_reason => [
-  "school/work",
-  "bullying",
-  "friends",
-  "finance",
-  "family",
-  "love/companionship",
-  "loss",
-  "self image",
-  "health",
-]
-
-Response
-content => [
-  "you will get through this",
-  "you are a champion",
-  "you will rock it",
-  "get with it",
-  "suck it up",
-]
-
-Sensitivity
-level => [
-  "humor",
-  "realistic",
-  "tough love",
-  "pick-me-up",
-]
-
-Trigger
-  { sensitivity_id: 1, content: "Humor me"}
-  { sensitivity_id: 2, content: "Give it to me"}
-  { sensitivity_id: 2, content: "I really need help"}
-  { sensitivity_id: 3, content: "Hit me with your best shot"}
-  { sensitivity_id: 4, content: "Compliment me"}
 

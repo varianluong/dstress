@@ -14,6 +14,7 @@ class StressesController < ApplicationController
     if params[:stress][:reason].present? and params[:stress][:response_type].present?
         session[:stress_reason] = params[:stress][:reason]
         session[:response_type] = params[:stress][:response_type]
+
         redirect_to "/solutions"
     else
       if not params[:stress][:reason].present?
