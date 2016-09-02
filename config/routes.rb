@@ -5,12 +5,13 @@ Rails.application.routes.draw do
 
   root 'stresses#index'
 
-  get 'sessions/new'   => 'sessions#new' 
+  get 'sessions/new'   => 'sessions#new'
   post 'sessions'      => 'sessions#create'
   delete 'sessions'    => 'sessions#destroy'
 
   get 'users'          => 'users#index'
   post 'users'         => 'users#create'
+
 
   get 'stresses'       => 'stresses#index'
   post 'stresses'      => 'stresses#create'
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
 
   get 'chats'          => 'chats#index'
   post 'chats'          => 'chats#create'
-  
+
 
 
   ## games
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   get 'games'       => 'games#index'
   ## images
   resources :images
-  
+
 
   get '/articles' => 'articles#index'
   get '/articles/get_results(/:query)' => 'articles#get_results'
@@ -35,6 +36,9 @@ Rails.application.routes.draw do
 
   get '/places' => 'places#index'
   post '/places/geturl' => 'places#geturl'
+  get 'schedulers' => 'schedulers#index'
+  get 'schedulers/new' => 'schedulers#new'
+  post 'schedulers' => 'schedulers#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
