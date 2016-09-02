@@ -15,7 +15,7 @@ class Scheduler < ActiveRecord::Base
     SCHEDULER.every '5s', :times => 2 do
     @twilio_number = '+17206051054'
     time_str = ((self.frequency).utc)
-    reminder = "Hey!"
+    reminder = "You only fail when you stop trying"
     message = TWILIOCLIENT.account.messages.create({
       :from => @twilio_number,
       :to => self.phone,
