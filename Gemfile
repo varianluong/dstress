@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
+
+gem "figaro"
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
@@ -61,4 +63,7 @@ gem 'less-rails-bootstrap'
 
 #for reminder_feature
 gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'twilio-ruby', '~> 4.11.1'
+gem "rufus-scheduler"
 

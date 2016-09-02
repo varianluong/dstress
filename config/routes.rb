@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   get 'stresses'           => 'stresses#index'
 
-  get 'notifications' => 'notifications#index'
-  post 'notifications' => 'notifications#create'
+  get 'schedulers' => 'schedulers#index'
+  get 'schedulers/new' => 'schedulers#new'
+  post 'schedulers' => 'schedulers#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
