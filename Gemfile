@@ -42,6 +42,8 @@ gem "figaro"
 
 
 group :development, :test do
+  gem 'tzinfo-data'
+
   gem "hirb"
   gem "rails-footnotes", ">= 4.0.0"
   gem "quiet_assets"
@@ -59,8 +61,8 @@ gem "bcrypt", "~> 3.1.7"
 gem "paperclip", "~> 4.2"
 
 
-gem 'therubyracer'  # If using Ruby
-gem 'less-rails-bootstrap'
+#gem 'therubyracer'  # If using Ruby
+#gem 'less-rails-bootstrap'
 
 
 
