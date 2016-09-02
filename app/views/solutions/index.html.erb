@@ -1,0 +1,89 @@
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/assets/jquery.ripples.js"></script>
+<script>
+    $(document).ready(function() {
+        var solution_routes = { "home"     : "/",
+                                "games"    : "/games",
+                                "media"    : "/media",
+                                "chatbot"  : "/chats",
+                                "places"   : "/places",
+                                "reminders": "/schedulers",
+                                "articles" : "/articles"
+                              };
+        $('.lotus').click(function() {
+            var targetPage = $(this).attr('id').substr(11).toLowerCase();
+            window.location.assign(solution_routes[targetPage]);
+        });
+
+        $('.lotus').mouseenter(function(){
+            //$(this).attr("src","/assets/lotus-active.png");
+            var labelSelector = "#lblSolution" + $(this).attr('id').substr(11);
+            $(labelSelector).attr("class","solutionLabelActive")
+        }); //
+        $('.lotus').mouseleave(function(){
+            //$(this).attr("src","/assets/lotus-inactive.png");
+            var labelSelector = "#lblSolution" + $(this).attr('id').substr(11);
+            $(labelSelector).attr("class","solutionLabelInactive");
+        });
+
+        //ripple effect
+        try {
+            $('#waterbg').ripples({
+                resolution: 300,
+                dropRadius: 50, //px
+                perturbance: 0.005,
+            });
+        }
+        catch (e) {
+            $('.error').show().text(e);
+        }
+
+        $('.js-ripples-disable').on('click', function() {
+            $('body, main').ripples('destroy');
+            $(this).hide();
+        });
+
+        $('.js-ripples-play').on('click', function() {
+            $('body, main').ripples('play');
+        });
+
+        $('.js-ripples-pause').on('click', function() {
+            $('body, main').ripples('pause');
+        });
+
+        // Automatic drops
+        setInterval(function() {
+            var $el = $('main');
+            var x = Math.random() * $el.outerWidth();
+            var y = Math.random() * $el.outerHeight();
+            var dropRadius = 100;
+            var strength = 0.04 + Math.random() * 0.04;
+
+            $el.ripples('drop', x, y, dropRadius, strength);
+        }, 400);
+    });
+</script>
+<h1>Your Solutions:</h1>
+<div id="waterbg" style="background-image:url('/assets/water-ripples-bg.jpg'); position:relative; background-size: 100% 100%; background-repeat: no-repeat;">
+    <div id="divSolutionHome" style="position:absolute; left:37em; top:16em;" class="lotus floating">
+        <h1 id="lblSolutionHome" class="solutionLabelInactive">Home</h1>
+    </div>
+    <div id="divSolutionGames" style="position:absolute; left:5em; top:22em;" class="lotus floating">
+        <h1 id="lblSolutionGames" class="solutionLabelInactive">Games</h1>
+    </div>
+    <div id="divSolutionMedia" style="position:absolute; left:15em; top:30em;" class="lotus floating">
+        <h1 id="lblSolutionMedia" class="solutionLabelInactive">Media</h1>
+    </div>
+    <div id="divSolutionChatbot" style="position:absolute; left:30em; top:38em;" class="lotus floating">
+        <h1 id="lblSolutionChatbot" class="solutionLabelInactive">Chatbot</h1>
+    </div>
+        <div id="divSolutionPlaces" style="position:absolute; left:45em; top:38em;" class="lotus floating">
+        <h1 id="lblSolutionPlaces" class="solutionLabelInactive">Places To Go</h1>
+    </div>
+    <div id="divSolutionReminders" style="position:absolute; left:60em; top:30em;" class="lotus floating">
+        <h1 id="lblSolutionReminders" class="solutionLabelInactive">Reminders</h1>
+    </div>
+    <div id="divSolutionArticles" style="position:absolute; left:70em; top:22em;" class="lotus floating">
+        <h1 id="lblSolutionArticles" class="solutionLabelInactive">Articles</h1>
+    </div>
+</div>

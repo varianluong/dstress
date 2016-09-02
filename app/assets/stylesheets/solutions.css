@@ -1,0 +1,72 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+#waterbg { 
+    width: 1400px;
+    height: 900px;
+}
+.lotus {
+    width: 168px;  /*560*/
+    height: 111px;  /*371*/
+    background: url('/assets/lotus-inactive.png');
+    background-size: 10em;
+    background-repeat: no-repeat;
+
+    -webkit-transition: background 0.9s; /* Safari */
+    transition: background 0.9s;
+}
+.lotus:hover {
+    background: url('/assets/lotus-active.png');
+    background-size: 10em;
+    background-repeat: no-repeat;
+}
+.solutionLabelInactive {
+    font: 25pt Arial;
+    font-weight: bold;
+    color: black;
+    padding-top: 1.7em;
+    -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #AAA;
+    text-align: center;
+    margin-right: .5em;
+    text-shadow: 4px 4px 5px #444;
+}
+.solutionLabelActive {
+    font: 25pt Arial;
+    font-weight: bold;
+    color: #EEE;
+    padding-top: 1.7em;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
+    margin-right: 0.5em;
+    text-shadow: 4px 4px 5px #444;
+}
+.floating{
+    float: left;
+    -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 7s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 7s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);}    
+}
+    
+@-moz-keyframes Floating{
+    from {-moz-transform:translate(0, 0px);}
+    65% {-moz-transform:translate(0, 15px);}
+    to {-moz-transform: translate(0, -0px);}    
+}
