@@ -72,12 +72,16 @@
 }
 
 #hotline {
-	overflow: auto;
-	position: relative;
-	left: 0;
-	right: 0;
-	z-index: 9999;
-	margin-left: 20px;
-	margin-right: 20px;
+  overflow: auto;
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: black;
+}
+
+.hotlinestyle {
   color: white;
 }
